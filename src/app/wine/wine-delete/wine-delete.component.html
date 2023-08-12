@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delete Wine</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    </button>
+</div>
+<div class="modal-body">
+    <p>Are you sure you want to delete that wine?</p>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-outline-dark" (click)="activeModal.dismiss('Cancel click')">Cancel</button>
+    <button type="submit" class="btn btn-outline-dark" (click)="deleteWine()">Delete</button>
+</div>

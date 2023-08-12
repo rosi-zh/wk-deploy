@@ -1,0 +1,26 @@
+<!-- Header -->
+<header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" appNavbarShrink>
+        <div class="container">
+            <a class="navbar-brand" routerLink="/wines">WineKnowledge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapse()">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive" [ngClass]="{'show': !isCollapsed}">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" routerLink="/home" (click)="toggleCollapse()">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" routerLink="/wines" (click)="toggleCollapse()">Wines</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" routerLink="/contact" (click)="toggleCollapse()">Contact</a></li>
+                    <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" routerLink="/auth/login" (click)="toggleCollapse()">Login</a></li>
+                    <ng-container *ngIf="isLoggedIn">
+                        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" routerLink="/auth/profile" (click)="toggleCollapse()">Profile</a></li>
+                        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" href="javascript:void(0)" (click)="logout()">Logout</a></li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

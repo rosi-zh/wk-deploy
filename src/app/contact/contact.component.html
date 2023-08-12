@@ -1,0 +1,127 @@
+<main id="main">
+    <section class="page-section">
+        <div class="container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d739.5903941847688!2d24.7452438!3d42.1425488!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd1f05bf54c45%3A0x23564e9dd23a55b3!2z0JHQuNGA0L7RgtC10YDQsNC_0LjRjyDQn9C70L7QstC00LjQsiAvIEJlZXJ0aGVyYXB5IFBsb3ZkaXY!5e0!3m2!1sbg!2sbg!4v1691781329099!5m2!1sbg!2sbg"
+                width="100%" height="270" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <div class="row gy-4 mt-4">
+                <div class="col-md-4">
+                    <div class="info-item d-flex align-items-center">
+                        <i class="icon bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>contact@example.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-item d-flex align-items-center">
+                        <i class="icon bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+398 888 123 456</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-map flex-shrink-0"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>36 Gladstone Street, Plovdiv, Bulgaria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Contact-->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="section-heading text-uppercase">Contact Us</h2>
+            </div>
+
+            <form id="contactForm" #contactForm="ngForm" (ngSubmit)="onSend()">
+                <div class="row align-items-stretch mb-5">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- Name input-->
+                            <input class="form-control" id="name" name="name" type="text" placeholder="Your Name *"
+                                ngModel #nameInput="ngModel" required minlength="2" />
+
+                            <ng-container *ngIf="nameInput.touched">
+                                <div class="invalid-feedback" *ngIf="nameInput.errors?.['required']">*Name is
+                                    required.</div>
+                                <div class="invalid-feedback" *ngIf="nameInput.errors?.['minlength']">*Name must
+                                    be at least {{nameInput.errors?.['minlength']['requiredLength']}} characters long.
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <!-- Email address input-->
+                            <input class="form-control" id="email" name="email" type="text" placeholder="Your Email *"
+                                ngModel #emailInput="ngModel" required appEmail />
+
+                            <ng-container *ngIf="emailInput.touched">
+                                <div class="invalid-feedback" *ngIf="emailInput.errors?.['required']">*Email is
+                                    required.</div>
+                                <div class="invalid-feedback" *ngIf="emailInput.errors?.['emailValidator']">*Email is
+                                    invalid.</div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group mb-md-0">
+                            <!-- Phone number input-->
+                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="Your Phone *"
+                                ngModel #phoneInput="ngModel" required minlength="9" />
+                            <ng-container *ngIf="phoneInput.touched">
+                                <div class="invalid-feedback" *ngIf="phoneInput.errors?.['required']">*Phone number is
+                                    required.</div>
+                                <div class="invalid-feedback" *ngIf="phoneInput.errors?.['minlength']">*Phone number
+                                    must be at least {{phoneInput.errors?.['minlength']['requiredLength']}} characters
+                                    long.</div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-textarea mb-md-0">
+                            <!-- Message input-->
+                            <textarea class="form-control" id="message" name="message" placeholder="Your Message *"
+                                ngModel #messageInput="ngModel" required minlength="10"></textarea>
+                            <ng-container *ngIf="messageInput.touched">
+                                <div class="invalid-feedback" *ngIf="messageInput.errors?.['required']">
+                                    *Message text is required.</div>
+                                <div class="invalid-feedback" *ngIf="messageInput.errors?.['minlength']">
+                                    *Message text must be at least
+                                    {{messageInput.errors?.['minlength']['requiredLength']}} characters long.
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <!-- Submit success message-->
+                <div id="submitSuccessMessage" *ngIf="sendResult && isSubmitted">
+                    <div class="text-center text-white mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
+                    </div>
+                </div>
+                <!-- Submit error message-->
+                <div id="submitErrorMessage" *ngIf="!sendResult && isSubmitted">
+                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                </div>
+
+                <!-- Submit Button-->
+                <div class="text-center">
+                    <button class="btn btn-danger btn-xl text-uppercase" id="submitButton" type="submit"
+                        [disabled]="contactForm.invalid">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>

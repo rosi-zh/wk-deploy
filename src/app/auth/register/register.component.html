@@ -1,0 +1,87 @@
+<main id="main">
+    <section class="page-section text-center">
+        <div class="container">
+            <div class="card mx-4 mx-md-5 form-box">
+                <div class="card-body py-5 px-md-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-4">
+
+                            <div class="text-center mb-4">
+                                <h2 class="section-heading text-uppercase">Register</h2>
+                                <h3 class="section-subheading text-muted">to WineKnowledge</h3>
+                            </div>
+
+                            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                                {{errorMessage}}
+                            </div>
+
+                            <form #registerForm="ngForm" (ngSubmit)="onRegister()">
+                                <!-- First name input -->
+                                <div class="form-group mt-4">
+                                    <label class="form-label" for="firstName">First name</label>
+                                    <input type="text" id="firstName" name="firstName" class="form-control" ngModel #firstNameInput="ngModel" required minlength="2"/>
+                                </div>
+                                <ng-container *ngIf="firstNameInput.touched">
+                                    <div class="invalid-feedback" *ngIf="firstNameInput.errors?.['required']">*First name is required.</div>
+                                    <div class="invalid-feedback" *ngIf="firstNameInput.errors?.['minlength']">*First name must be at least {{firstNameInput.errors?.['minlength']['requiredLength']}} characters long.</div>
+                                </ng-container>
+
+                                <!-- Last name input -->
+                                <div class="form-group mt-4">
+                                    <label class="form-label" for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-control" ngModel #lastNameInput="ngModel" required  minlength="2"/>
+                                </div>
+                                <ng-container *ngIf="lastNameInput.touched">
+                                    <div class="invalid-feedback" *ngIf="lastNameInput.errors?.['required']">*Last name is required.</div>
+                                    <div class="invalid-feedback" *ngIf="lastNameInput.errors?.['minlength']">*Last name must be at least {{lastNameInput.errors?.['minlength']['requiredLength']}} characters long.</div>
+                                </ng-container>
+
+                                <!-- Email input -->
+                                <div class="form-group mt-4">
+                                    <label class="form-label" for="email">Email address</label>
+                                    <input type="email" id="email" name="email" class="form-control" ngModel #emailInput="ngModel" required appEmail/>
+                                </div>
+                                <ng-container *ngIf="emailInput.touched">
+                                    <div class="invalid-feedback" *ngIf="emailInput.errors?.['required']">*Email is required.</div>
+                                    <div class="invalid-feedback" *ngIf="emailInput.errors?.['emailValidator']">*Email is invalid.</div>
+                                </ng-container>
+
+                                <!-- Password input -->
+                                <div class="form-group mt-4">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control" ngModel #passwordInput="ngModel" required minlength="8" />
+                                </div>
+                                <ng-container *ngIf="passwordInput.touched">
+                                    <div class="invalid-feedback" *ngIf="passwordInput.errors?.['required']">*Password is required.</div>
+                                    <div class="invalid-feedback" *ngIf="passwordInput.errors?.['minlength']">*Password must be at least {{passwordInput.errors?.['minlength']['requiredLength']}} characters long.</div>
+                                </ng-container>
+
+                                <!-- RePassword input -->
+                                <div class="form-group mt-4">
+                                    <label class="form-label" for="rePassword">Repeat Password</label>
+                                    <input type="password" id="rePassword" name="rePassword" class="form-control" ngModel #rePasswordInput="ngModel" required appMatchPasswords="{{passwordInput.value}}" />
+                                </div>
+                                <ng-container *ngIf="rePasswordInput.touched">
+                                    <div class="invalid-feedback" *ngIf="rePasswordInput.errors?.['required']">*Repeat Password is required.</div>
+                                    <div class="invalid-feedback" *ngIf="rePasswordInput.errors?.['matchPasswords']">*Passwords don't match.</div>
+                                </ng-container>
+                                <!-- Checkbox -->
+                                <div class="form-check d-flex justify-content-center my-4">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="rememberCheck" checked />
+                                    <label class="form-check-label" for="rememberCheck">Remember me</label>
+                                </div>
+
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-danger text-uppercase mb-4 px-4" [disabled]="registerForm.invalid">Register</button>
+
+                                <div>
+                                    <h6>Already have an account? <a routerLink="/auth/login">Login</a></h6>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Edit name</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  </button>
+</div>
+<form #editNameForm="ngForm" (ngSubmit)="onSave()">
+  <div class="modal-body">
+    <div class="form-group mt-4">
+      <label class="form-label" for="firstName">First name</label>
+      <input type="text" id="firstName" name="firstName" class="form-control" ngModel #firstNameInput="ngModel" required
+        minlength="2" [ngModel]="fullName.firstName" />
+    </div>
+    <ng-container *ngIf="firstNameInput.touched">
+      <div class="invalid-feedback" *ngIf="firstNameInput.errors?.['required']">*First name is required.</div>
+      <div class="invalid-feedback" *ngIf="firstNameInput.errors?.['minlength']">*First name must be at least
+        {{firstNameInput.errors?.['minlength']['requiredLength']}} characters long.</div>
+    </ng-container>
+
+    <!-- Last name input -->
+    <div class="form-group mt-4">
+      <label class="form-label" for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" class="form-control" ngModel #lastNameInput="ngModel" required
+        minlength="2" [ngModel]="fullName.lastName" />
+    </div>
+    <ng-container *ngIf="lastNameInput.touched">
+      <div class="invalid-feedback" *ngIf="lastNameInput.errors?.['required']">*Last name is required.</div>
+      <div class="invalid-feedback" *ngIf="lastNameInput.errors?.['minlength']">*Last name must be at least
+        {{lastNameInput.errors?.['minlength']['requiredLength']}} characters long.</div>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-dark" (click)="activeModal.dismiss('Cancel click')">Cancel</button>
+    <button type="submit" class="btn btn-outline-dark" [disabled]="editNameForm.invalid">Save</button>
+  </div>
+</form>

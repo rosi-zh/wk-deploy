@@ -1,0 +1,67 @@
+.font-size38 {
+    font-size: 38px;
+}
+
+.wine-single-text .section-heading h4,
+.section-heading h5 {
+    font-size: 36px
+}
+
+.wine-single-text .section-heading.half {
+    margin-bottom: 20px
+}
+
+.edit-btn {
+    margin-right: 20px;
+}
+
+div.wine-single-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.list-style {
+    list-style: none;
+    padding: 0
+}
+
+.list-style li {
+    position: relative;
+    padding: 0 0 15px 0;
+    margin: 0 0 15px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1)
+}
+
+.list-style li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0
+}
+
+
+@media screen and (max-width: 1199px) {
+    .wine-single-text .section-heading h4,
+    .section-heading h5 {
+        font-size: 32px
+    }
+    .wine-single-text .section-heading.half {
+        margin-bottom: 15px
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .wine-single-text .section-heading h4,
+    .section-heading h5 {
+        font-size: 28px
+    }
+    .wine-single-text .section-heading.half {
+        margin-bottom: 10px
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .wine-single-text .section-heading h4,
+    .section-heading h5 {
+        font-size: 24px
+    }
+}

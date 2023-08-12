@@ -1,0 +1,43 @@
+<section class="page-section h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-11 col-xl-9">
+                <div class="card">
+                    <div class="rounded-top text-white d-flex flex-row top-div">
+                        <div class="ms-4 mt-5 d-flex flex-column left-div">
+                            <img src="/assets/img/avatar.png" alt="Profile picture"
+                                class="img-fluid img-thumbnail mt-4 mb-2 profile-picture">
+                            <button type="button" class="btn btn-outline-dark edit-btn" (click)="openModal()">
+                                Edit name
+                            </button>
+                        </div>
+                        <div class="ms-3 right-div">
+                            <h5>{{profileDetails.displayName}}</h5>
+                            <p>{{profileDetails.email}}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 text-black bg-light">
+                        <div class="d-flex justify-content-end text-center py-1">
+                            <div>
+                                <p class="mb-1 h5">Last Login</p>
+                                <p class="small text-muted mb-0 login-date">{{profileDetails.lastLoginAt | date:'medium'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4 text-black text-center">
+                        <div class="row g-4">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a [routerLink]="['/wines', 'my', profileDetails.localId]" class="btn btn-danger mb-3">Go To My Wines</a>
+                                        <img src="/assets/img/wine-lights.jpg" class="card-img-bottom" alt="wine lights">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

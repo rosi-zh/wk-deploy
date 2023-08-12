@@ -1,0 +1,25 @@
+.top-div {
+    background-color: #000; 
+    height: 200px;
+}
+
+.left-div {
+    width: 150px;
+}
+
+.edit-btn {
+    z-index: 1;
+}
+
+.profile-picture {
+    width: 150px; 
+    z-index: 1
+}
+
+.right-div {
+    margin-top: 120px;
+}
+
+.login-date {
+    overflow-wrap: break-word;
+}
